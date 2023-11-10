@@ -1,0 +1,32 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        #bind:
+        #    $test: 'test'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    Redis:
+        # you can also use \RedisArray, \RedisCluster or \Predis\Client classes
+        class: Redis
+        calls:
+            - connect:
+                - '%env(REDIS_HOST)%'
+                - '%env(int:REDIS_PORT)%'
+
+            # uncomment the following if your Redis server requires a password
+            # - auth:
+            #     - '%env(REDIS_PASSWORD)%'
+
+    App\Util\TestTZ:
+        arguments:
+            $timezone: '%env(APP_TIMEZONE)%'
+
