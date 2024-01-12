@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/doctrine-bundle": "^2.10",
@@ -12,13 +12,13 @@
         "doctrine/orm": "^2.16",
         "fsa/shcc-framework": "dev-local",
         "fsa/shcc-mqtt": "dev-local",
-        "symfony/console": "6.3.*",
-        "symfony/dotenv": "6.3.*",
+        "symfony/console": "7.0.*",
+        "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
-        "symfony/framework-bundle": "6.3.*",
+        "symfony/framework-bundle": "7.0.*",
         "symfony/monolog-bundle": "^3.10",
-        "symfony/runtime": "6.3.*",
-        "symfony/yaml": "6.3.*"
+        "symfony/runtime": "7.0.*",
+        "symfony/yaml": "7.0.*"
     },
     "config": {
         "allow-plugins": {
@@ -65,7 +65,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.3.*"
+            "require": "7.0.*"
         }
     }
 }

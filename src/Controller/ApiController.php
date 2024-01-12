@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use ShccBundle\Plugins;
+use ShccFramework\Plugins;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,15 +23,5 @@ class ApiController extends AbstractController
             'daemon' => $plugin_info->daemon,
             'settings' => isset($plugin_info->settings) ? array_merge((array)$plugin_info->settings, []) : []
         ]);
-    }
-
-    #[Route('/api/test')]
-    function test()
-    {
-        return $this->json('{"name":"AAA"}');
-        //return $this->json(['name' => $name]);
-        //$response = new JsonResponse();
-        //$response->setContent('{"name":"AAA"}');
-        //return $response;
     }
 }

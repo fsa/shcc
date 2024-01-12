@@ -4,8 +4,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        #bind:
-        #    $test: 'test'
 
     App\:
         resource: '../src/'
@@ -15,7 +13,6 @@ services:
             - '../src/Kernel.php'
 
     Redis:
-        # you can also use \RedisArray, \RedisCluster or \Predis\Client classes
         class: Redis
         calls:
             - connect:
@@ -25,8 +22,4 @@ services:
             # uncomment the following if your Redis server requires a password
             # - auth:
             #     - '%env(REDIS_PASSWORD)%'
-
-    App\Util\TestTZ:
-        arguments:
-            $timezone: '%env(APP_TIMEZONE)%'
 
