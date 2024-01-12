@@ -1,5 +1,8 @@
 parameters:
 
+imports:
+    - { resource: shcc/daemons.yaml }
+
 services:
     _defaults:
         autowire: true
@@ -22,4 +25,6 @@ services:
             # uncomment the following if your Redis server requires a password
             # - auth:
             #     - '%env(REDIS_PASSWORD)%'
+
+    ShccFramework\PluginRepository:
 
