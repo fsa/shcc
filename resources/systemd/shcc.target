@@ -1,0 +1,5 @@
+[Unit]
+Wants=shcc-minutely.timer
+
+[Install]
+WantedBy=default.target
