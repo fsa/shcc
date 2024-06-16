@@ -1,0 +1,7 @@
+---
+- name: Rollback app to server
+  hosts: shcc
+  vars:
+    ansistrano_deploy_to: "{{ deploy_path }}/shcc"
+  roles:
+    - { role: ansistrano.rollback }

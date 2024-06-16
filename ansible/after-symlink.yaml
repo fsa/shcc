@@ -1,0 +1,4 @@
+- name: Dump .env file
+  shell: "{{ ansistrano_deploy_to }}/composer.phar dump-env prod"
+  args:
+    chdir: "{{ ansistrano_release_path.stdout }}/"
