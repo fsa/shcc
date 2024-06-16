@@ -29,6 +29,12 @@
     "fsa/shcc-framework": {
         "version": "dev-local"
     },
+    "fsa/shcc-mqtt": {
+        "version": "dev-local"
+    },
+    "fsa/shcc-yandex": {
+        "version": "dev-local"
+    },
     "symfony/console": {
         "version": "6.3",
         "recipe": {
@@ -71,6 +77,15 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/maker-bundle": {
+        "version": "1.51",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
     },
     "symfony/monolog-bundle": {
         "version": "3.10",

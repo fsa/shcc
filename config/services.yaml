@@ -1,32 +1,46 @@
 parameters:
+  tts.yandex:
+    key: '%env(SHCC_YANDEX_TTS_KEY)%'
+
+  telegram.channel.shcc: '%env(resolve:SHCC_TELEGRAM_CHANNEL)%'
+  telegram.channel.admin: '%env(resolve:SHCC_TELEGRAM_ADMIN)%'
+  telegram.bot.api_token: '%env(resolve:TELEGRAM_BOT_API_KEY)%'
+  telegram.bot.webhook_secret: '%env(resolve:TELEGRAM_BOT_API_KEY)%'
+  telegram.bot.webhook_url: '%env(resolve:TELEGRAM_BOT_API_KEY)%'
 
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-        #bind:
-        #    $test: 'test'
+  _defaults:
+    autowire: true
+    autoconfigure: true
 
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+  App\:
+    resource: '../src/'
+    exclude:
+      - '../src/Entity/'
 
-    Redis:
-        # you can also use \RedisArray, \RedisCluster or \Predis\Client classes
-        class: Redis
-        calls:
-            - connect:
-                - '%env(REDIS_HOST)%'
-                - '%env(int:REDIS_PORT)%'
+  Redis:
+    class: Redis
+    calls:
+      - connect:
+        - '%env(REDIS_HOST)%'
+        - '%env(int:REDIS_PORT)%'
+      # - auth:
+      #   - '%env(REDIS_PASSWORD)%'
 
-            # uncomment the following if your Redis server requires a password
-            # - auth:
-            #     - '%env(REDIS_PASSWORD)%'
+  shcc.tts: '@shcc.tts.yandex'
 
-    App\Util\TestTZ:
-        arguments:
-            $timezone: '%env(APP_TIMEZONE)%'
+  FSA\Telegram\TelegramBotQuery:
+    bind:
+      $token: '%telegram.bot.api_token%'
+    tags:
+      - { name: monolog.logger, channel: telegram }
 
+  FSA\Telegram\TelegramBotWebhook:
+    bind:
+      $secret: '%telegram.bot.webhook_secret%'
+    tags:
+      - { name: monolog.logger, channel: telegram }
+
+  FSA\Telegram\TelegramBotApi:
+    tags:
+      - { name: monolog.logger, channel: telegram }

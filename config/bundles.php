@@ -6,4 +6,7 @@ return [
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
     Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
     ShccBundle\ShccBundle::class => ['all' => true],
+    Shcc\MqttBundle\MqttBundle::class => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    Shcc\YandexBundle\ShccYandexBundle::class => ['all' => true],
 ];

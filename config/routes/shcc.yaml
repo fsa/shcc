@@ -1,0 +1,2 @@
+shcc_routes:
+  resource: '@ShccBundle/config/routes.yaml'

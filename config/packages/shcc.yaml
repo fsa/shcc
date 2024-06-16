@@ -1,0 +1,3 @@
+shcc:
+  tts:
+    play_sound_cmd: 'mpv --no-terminal --volume=80 %s'
