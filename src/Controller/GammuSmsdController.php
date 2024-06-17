@@ -17,7 +17,10 @@ class GammuSmsdController extends AbstractController
     {
         $connection = $entityManager->getConnection();
         $msg = $connection->executeQuery('SELECT "SenderNumber" as num, "TextDecoded" as text FROM inbox WHERE "ID"=?', [$id])->fetchAssociative();
-        if ($msg or !$msg['text']) {
+        if (!$msg) {
+            return $this->json(['status' => 200, 'response' => 'empty']);
+        }
+        if (!$msg['text']) {
             return $this->json(['status' => 200, 'message' => $msg]);
         }
         $result = $telegramBotQuery->httpPost(
